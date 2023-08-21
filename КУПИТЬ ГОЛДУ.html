@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Введите количество голды которое вы хотите купить у Атлантика</title>
+</head>
+<body>
+    <h1>Введите количество голды которое вы хотите купить у Атлантика</h1>
+    <input type="number" id="numberInput" placeholder="Целое число от 100 до 100000 голды">
+    <button onclick="calculate()">Рассчитать</button>
+    <p id="resultText"></p>
+
+    <script>
+        function calculate() {
+            var numberInput = document.getElementById("numberInput");
+            var resultText = document.getElementById("resultText");
+
+            var number = parseInt(numberInput.value);
+
+            if (isNaN(number)) {
+                resultText.innerText = "Пожалуйста, введите число";
+                return;
+            }
+
+            if (number < 100 || number > 100000) {
+                resultText.innerText = "Сумма должна быть от 100 до 100000 голды";
+                return;
+            }
+
+            var result;
+
+            if (number >= 100 && number <= 499) {
+                result = number * 0.8;
+            } else if (number >= 500 && number <= 999) {
+                result = number * 0.75;
+            } else if (number >= 1000 && number <= 2999) {
+                result = number * 0.7;
+            } else if (number >= 3000 && number <= 9999) {
+                result = number * 0.625;
+            } else if (number >= 10000 && number <= 10999) {
+                result = number * 0.61;
+            } else {
+                result = number * 0.601;
+            }
+
+            resultText.innerText = "К оплате (ЛС Discord yaroslavvoron): " + result + "RUB";
+        }
+    </script>
+</body>
+</html>
